@@ -36,9 +36,9 @@ DEBUG = os.environ.get("DEBUG",False) == True
 # ALLOWED_HOSTS = []
 ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
 
-RENDER_EXTERNAL_HOSTNAME =os.environ.get("RENDER_EXTERNAL_HOSTNAME")
-if RENDER_EXTERNAL_HOSTNAME:
-    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
+# RENDER_EXTERNAL_HOSTNAME =os.environ.get("RENDER_EXTERNAL_HOSTNAME")
+# if RENDER_EXTERNAL_HOSTNAME:
+#     ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 # Application definition
 
 INSTALLED_APPS = [
@@ -86,12 +86,19 @@ WSGI_APPLICATION = 'project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default':dj_database_url.config(conn_max_age=600) if "DATABASE_URL" in os.environ 
+#     else
+#     {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR ,'db.sqlite3')
+#         }
+# }
 DATABASES = {
-    'default':dj_database_url.config(conn_max_age=600) if "DATABASE_URL" in os.environ 
-    else{
+    'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR ,'db.sqlite3')
-        }
+        'NAME': str(os.path.join(BASE_DIR, "db.sqlite3"))
+    }
 }
 
 database_url =os.environ.get("DATABASE_URL")
@@ -138,9 +145,9 @@ STATIC_URL = 'static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-if not DEBUG:
-    STATIC_ROOT = os.path.join(BASE_DIR , 'static')
-    STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage",
+# if not DEBUG:
+STATIC_ROOT = os.path.join(BASE_DIR , 'static')
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage",
 
 # STORAGES = {
 #     # ...
