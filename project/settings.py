@@ -30,11 +30,15 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # 'django-insecure-ff!ypg$zc!lqdbzw#6x06z-b0*2z*#%pc(_qr8typr7ly96mp_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get("DEBUG",False) == True
+DEBUG = 'RENDER' not in os.environ
+# DEBUG = os.environ.get("DEBUG",False) == True
 
-ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
+ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
 
-
+RENDER_EXTERNAL_HOSTNAME =os.environ.get("RENDER_EXTERNAL_HOSTNAME")
+if RENDER_EXTERNAL_HOSTNAME:
+    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 # Application definition
 
 INSTALLED_APPS = [
@@ -83,14 +87,15 @@ WSGI_APPLICATION = 'project.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
+    'default':dj_database_url.config(conn_max_age=600) if "DATABASE_URL" in os.environ 
+    else{
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+        'NAME': os.path.join(BASE_DIR ,'db.sqlite3')
+        }
 }
 
-database_url =os.environ.get("DATABASE_URL")
-DATABASES['default']=dj_database_url.parse(database_url)
+# database_url =os.environ.get("DATABASE_URL")
+# DATABASES['default']=dj_database_url.parse(database_url)
 
 
 
@@ -133,12 +138,16 @@ STATIC_URL = 'static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-STORAGES = {
-    # ...
-    "static": {
-        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
-    },
-}
+if not DEBUG:
+    STATIC_ROOT = os.path.join(BASE_DIR , 'staticfiles')
+    STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage",
+
+# STORAGES = {
+#     # ...
+#     "static": {
+#         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+#     },
+# }
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
