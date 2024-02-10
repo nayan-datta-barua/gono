@@ -34,7 +34,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 DEBUG = os.environ.get("DEBUG",False) == True
 
 # ALLOWED_HOSTS = []
-ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
+ALLOWED_HOSTS = [os.environ.get("ALLOWED_HOSTS")]
 
 # RENDER_EXTERNAL_HOSTNAME =os.environ.get("RENDER_EXTERNAL_HOSTNAME")
 # if RENDER_EXTERNAL_HOSTNAME:
@@ -86,23 +86,28 @@ WSGI_APPLICATION = 'project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default':dj_database_url.config(conn_max_age=600) if "DATABASE_URL" in os.environ 
-#     else
-#     {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR ,'db.sqlite3')
-#         }
-# }
 DATABASES = {
-    'default': {
+    'default':dj_database_url.config(conn_max_age=600) if "DATABASE_URL" in os.environ 
+    else
+    {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': str(os.path.join(BASE_DIR, "db.sqlite3"))
-    }
+        'NAME': os.path.join(BASE_DIR ,'db.sqlite3')
+        }
 }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': str(os.path.join(BASE_DIR, "db.sqlite3"))
+#     }
+# }
 
-database_url =os.environ.get("DATABASE_URL")
-DATABASES['default']=dj_database_url.parse(database_url)
+DATABASE_URL = os.getenv('DATABASE_URL')
+# DATABASES = {
+#     'default': dj_database_url.config(),
+# }
+
+# database_url =os.environ.get("DATABASE_URL")
+# DATABASES['default']=dj_database_url.parse(database_url)
 
 # postgres://gonobartha_user:ZyWJRaecAFDuKu5soYrbzVx30aqE3g4B@dpg-cn3hjrfqd2ns73ehmg50-a/gonobartha
 
@@ -124,6 +129,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+WHITENOISE_MANIFEST_STRICT = False
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
@@ -140,13 +146,17 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+STATIC_ROOT = os.path.join(BASE_DIR,'static/')
 
-# if not DEBUG:
-STATIC_ROOT = os.path.join(BASE_DIR , 'static')
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "news/static")
+]
+
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage",
 
 # STORAGES = {
