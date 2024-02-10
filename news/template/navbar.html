@@ -1,0 +1,140 @@
+<!-- Dropdown Structure -->
+<ul id="dropdown1" class="dropdown-content">
+
+
+  <!-- {% for cat in cats %}
+
+  <li><a href="/{{cat.cat_id}}">{{cat.title}}</a></li>
+
+  {% endfor %} -->
+
+</ul>
+<!-- <header> -->
+  <!-- Header Start -->
+ <div class="header-area">
+      <div class="main-header ">
+          <div class="header-top black-bg d-none d-md-block">
+             <div class="container">
+                 <div class="col-xl-12">
+                      <div class="row d-flex justify-content-between align-items-center">
+                          <div class="header-info-left col-xl-3 col-lg-3">
+                             <!-- <div class="col-xl-3 col-lg-3 col-md-3">
+                                <div class="logo">
+                                    <a href="index.html"><img src="static/assets/img/logo/logo.png" alt=""></a>
+                                </div>
+                            </div>  -->
+                              <ul>   
+                                 
+                            <li><img src="static/assets/img/logo/logo.png" class="mh-25" alt=""></li> 
+                                  <!-- <li><p id="datetime"></p></li> -->
+                              </ul>
+                          </div>
+                          <div class="header-info-right">
+                              <ul class="header-social">   
+                                <li><p id="datetime"></p> </li>
+                                  <li><a href="#"><i class="fab fa-twitter w-25 p-3"></i></a></li>
+                                  <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                 <li> <a href="#"><i class="fab fa-pinterest-p"></i></a></li>
+                              </ul>
+                          </div>
+                      </div>
+                 </div>
+             </div>
+          </div>
+          <div class="header-mid d-none d-md-block">
+             <div class="container">
+                  <div class="row d-flex align-items-center">
+                      <!-- logo -->
+                       <!-- <div class="col-xl-3 col-lg-3 col-md-3">
+                          <div class="logo">
+                              <a href="index.html"><img src="static/assets/img/logo/logo.png" alt=""></a>
+                          </div>
+                      </div> -->
+                      <div class="col-xl-9 col-lg-9 col-md-9">
+                          <!-- <div class="header-banner f-right ">
+                              <img src="static/assets/img/hero/header_card.jpg" alt="">
+                          </div> 
+                      </div>
+                  </div>
+             </div>
+          </div>
+         <div class="header-bottom header-sticky">
+              <div class="container">
+                  <div class="row align-items-center">
+                      <div class="col-xl-10 col-lg-10 col-md-12 header-flex">
+                           sticky -->
+                              <div class="sticky-logo">
+                                  <a href="index.html"><img src="static/assets/img/logo/logo.png" alt=""></a>
+                              </div>
+                          <!-- Main-menu -->
+                          <div class="main-menu d-none d-md-block">
+                              <nav>                  
+                                  <ul id="navigation">    
+                                      <li><a href="/">হোম</a></li>
+                                      <li><a href="/category">পছন্দ নিবাচন করুন</a></li>
+                                      <li><a href="/about">সম্পর্ক</a></li>
+                                      <li><a href="/latest_news">সবশেষ</a></li>
+                                      <li><a href="/contact">যোগাযোগ</a></li>
+                                      <li><a href="#"> পেইজ</a>
+                                          <ul class="submenu">
+                                              <li><a href="elements.html"> পেইজ1</a></li>
+                                              <li><a href="blog.html"> পেইজ2</a></li>
+                                              <li><a href="single-blog.html"> পেইজ3</a></li>
+                                              <li><a href="details.html"> পেইজ4</a></li>
+                                          </ul>
+                                      </li>
+                                  </ul>
+                              </nav>
+                          </div>
+                      </div>             
+                      <div class="col-xl-2 col-lg-2 col-md-4">
+                          <div class="header-right-btn f-right d-none d-lg-block">
+                              <i class="fas fa-search special-tag"></i>
+                              <div class="search-box">
+                                  <form action="#">
+                                      <input type="text" placeholder="Search">
+                                      
+                                  </form>
+                              </div>
+                          </div>
+                      </div>
+                      <!-- Mobile Menu -->
+                      <div class="col-12">
+                          <div class="mobile_menu d-block d-md-none"></div>
+                      </div>
+                  </div>
+              </div>
+         </div>
+      </div>
+ </div> 
+  <!-- Header End -->
+<!-- </header> -->
+<script>
+    // Get current date and time
+    var now = new Date();
+    var datetime = now.toLocaleString();
+  
+    // Insert date and time into HTML
+    document.getElementById("datetime").innerHTML = datetime;
+  </script>
+
+  <script>
+    window.weatherWidgetConfig =  window.weatherWidgetConfig || [];
+    window.weatherWidgetConfig.push({
+        selector:".weatherWidget",
+        apiKey:"YOUR_API_KEY", //Sign up for your personal key
+        location:"London, UK", //Enter an address
+        unitGroup:"metric", //"us" or "metric"
+        forecastDays:5, //how many days forecast to show
+        title:"London,UK", //optional title to show in the 
+        showTitle:true, 
+        showConditions:true
+    });
+   
+    (function() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://www.visualcrossing.com/widgets/forecast-simple/weather-forecast-widget-simple.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+ </script>
