@@ -46,7 +46,7 @@ class Dailynews(models.Model):
     title = models.CharField(max_length=200)
     content = models.TextField()
     cat = models.ForeignKey(Category,on_delete= models.CASCADE)
-    image =models.ImageField(upload_to='dailynews/')
+    image =models.ImageField(upload_to='')
     date_uploaded = models.DateField(default=timezone.now)
     
     def image_tag(self):
@@ -61,7 +61,7 @@ class Weeklynews(models.Model):
     title = models.CharField(max_length=200)
     content = models.TextField()
     # category = models.ForeignKey(Category,on_delete= models.CASCADE)
-    image =models.ImageField(upload_to='weeknews/')
+    image =models.ImageField(upload_to='')
     date_uploaded = models.DateField(default=timezone.now)
     def image_tag(self):
         return format_html(
@@ -74,7 +74,7 @@ class newnewsforegin(models.Model):
     title = models.CharField(max_length=200)
     content = models.TextField()
     category = models.ForeignKey(Category,on_delete= models.CASCADE)
-    image =models.ImageField(upload_to='newnews/')
+    image =models.ImageField(upload_to='')
     date_uploaded = models.DateField(default=timezone.now)
     def image_tag(self):
         return format_html(
@@ -84,7 +84,7 @@ class newnewsforegin(models.Model):
 
 class vedio(models.Model):
     title= models.CharField(max_length=200)
-    video = models.FileField(upload_to='videos_uploaded',null=True,
+    video = models.FileField(upload_to='',null=True,
     validators=[FileExtensionValidator(allowed_extensions=['MOV','avi','mp4','webm','mkv'])])
     date_uploaded = models.DateField(default=timezone.now)
     def image_tag(self):
@@ -93,7 +93,7 @@ class vedio(models.Model):
 
 class politics(models.Model):
     title= models.CharField(max_length=200)
-    video = models.FileField(upload_to='videos_uploaded',null=True,
+    video = models.FileField(upload_to='',null=True,
     validators=[FileExtensionValidator(allowed_extensions=['MOV','avi','mp4','webm','mkv'])])
     date_uploaded = models.DateField(default=timezone.now)
     def image_tag(self):
