@@ -33,7 +33,7 @@
                         <div class="trend-top-img">
                             {%for post in posts %}
 
-                            <img src="media/{{post.image}}"  alt="Responsive image">
+                            <img src="{{post.image}}"  alt="Responsive image">
                             <div class="trend-top-cap">
                                 <span>Appetizers</span>
                                 <h2><a href="/post/{{post.news_id}}">{{post.title}}</a></h2>
@@ -55,7 +55,7 @@
 
                                 <div class="single-bottom mb-35">
                                     <div class="trend-bottom-img mb-30">
-                                        <img src="media/{{post.image}}" alt="">
+                                        <img src="{{post.image}}" alt="">
                                     </div>
                                     <div class="trend-bottom-cap">
                                         <span class="color1">{{post.cat}}</span>
@@ -76,7 +76,7 @@
                     {%for post in sides %}
                     <div class="trand-right-single d-flex">
                         <div class="trand-right-img">
-                            <img src="media/{{post.image}}"class="img-thumbnail" alt="">
+                            <img src="{{post.image}}"class="img-thumbnail" alt="">
                         </div>
                         <div class="trand-right-cap">
                             <!-- <span class="color1">Concert</span> -->
