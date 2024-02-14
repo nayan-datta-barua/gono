@@ -51,7 +51,7 @@ class Dailynews(models.Model):
     
     def image_tag(self):
         return format_html(
-            '<img src="/media/{}" style="width:40px;height:40px;border-radius:50%;"  />'.format(self.image))
+            '<img src="{}" style="width:40px;height:40px;border-radius:50%;"  />'.format(self.image))
     def __str__(self):
         return self.title
     
@@ -65,7 +65,7 @@ class Weeklynews(models.Model):
     date_uploaded = models.DateField(default=timezone.now)
     def image_tag(self):
         return format_html(
-            '<img src="/media/{}" style="width:40px;height:40px;border-radius:50%;"  />'.format(self.image))
+            '<img src="{}" style="width:40px;height:40px;border-radius:50%;"  />'.format(self.image))
     def __str__(self):
         return self.title
     
@@ -78,7 +78,7 @@ class newnewsforegin(models.Model):
     date_uploaded = models.DateField(default=timezone.now)
     def image_tag(self):
         return format_html(
-            '<img src="/media/{}" style="width:40px;height:40px;border-radius:50%;"  />'.format(self.image))
+            '<img src="{}" style="width:40px;height:40px;border-radius:50%;"  />'.format(self.image))
     def __str__(self):
         return self.title
 
@@ -89,7 +89,7 @@ class vedio(models.Model):
     date_uploaded = models.DateField(default=timezone.now)
     def image_tag(self):
         return format_html(
-            '<img src="/media/{}" style="width:40px;height:40px;border-radius:50%;"  />'.format(self.video))
+            '<img src="{}" style="width:40px;height:40px;border-radius:50%;"  />'.format(self.video))
 
 class politics(models.Model):
     title= models.CharField(max_length=200)
@@ -98,5 +98,5 @@ class politics(models.Model):
     date_uploaded = models.DateField(default=timezone.now)
     def image_tag(self):
         return format_html(
-            '<img src="/media/{}" style="width:40px;height:40px;border-radius:50%;"  />'.format(self.video))
+            '<img src="{}" style="width:40px;height:40px;border-radius:50%;"  />'.format(self.video))
 
