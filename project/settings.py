@@ -30,8 +30,8 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # 'django-insecure-ff!ypg$zc!lqdbzw#6x06z-b0*2z*#%pc(_qr8typr7ly96mp_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = 'RENDER' not in os.environ
 DEBUG = os.environ.get("DEBUG",False) == True
+
 
 ALLOWED_HOSTS = []
 # ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS")
@@ -109,6 +109,8 @@ DATABASE_URL = os.getenv('DATABASE_URL')
 # database_url =os.environ.get("DATABASE_URL")
 # DATABASES['default']=dj_database_url.parse(database_url)
 
+# postgres://gonobartha_user:ZyWJRaecAFDuKu5soYrbzVx30aqE3g4B@dpg-cn3hjrfqd2ns73ehmg50-a/gonobartha
+# postgres://gonobartha_user:ZyWJRaecAFDuKu5soYrbzVx30aqE3g4B@dpg-cn3hjrfqd2ns73ehmg50-a.singapore-postgres.render.com/gonobartha
 # postgres://gonobartha_user:ZyWJRaecAFDuKu5soYrbzVx30aqE3g4B@dpg-cn3hjrfqd2ns73ehmg50-a/gonobartha
 
 # Password validation
