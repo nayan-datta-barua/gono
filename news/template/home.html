@@ -622,7 +622,7 @@
 </div>
 <!-- End Start youtube -->
 <!--  Recent Articles start -->
-{% for p in dailys %}
+
 <div class="trending-area fix">
     <div class="container">
 <div class="recent-articles">
@@ -636,7 +636,7 @@
                     </div>
                 </div>
             </div>
-          
+            {% for p in dailys %}
             <div class="row" >
                 <div class="col-12">
                     
@@ -659,13 +659,14 @@
                     
                 </div>
             </div>
+            {% endfor%}
             
         </div>
     </div>
 </div>
     </div>
 </div>
-{% endfor%}
+
 <!--Recent Articles End -->
 <!--Start pagination -->
 <div class="pagination-area pb-45 text-center">
