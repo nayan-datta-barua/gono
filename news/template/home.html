@@ -638,9 +638,11 @@
           
             <div class="row" >
                 <div class="col-12">
+                    {% for p in dailys %}
                     <div class="recent-active dot-style d-flex dot-style">
-                        {% for p in dailys %}
+                       
                         <div class="single-recent mb-100">
+                            
                             <div class="what-img">
                                 <img src="{{p.image}}" class="rounded mx-auto d-block" alt="">
                             </div>
@@ -648,10 +650,12 @@
                                 <span class="color1">{{p.cat}}</span>
                                 <h4><a href="/postmain/{{p.news_id}}">{{p.title |truncatewords:10}}</a></h4>
                             </div>
+                            
                         </div>
-                        {% endfor%}
+                        
                       
                     </div>
+                    {% endfor%}
                 </div>
             </div>
             
